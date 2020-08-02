@@ -1,0 +1,5 @@
+package io.hack.poll.app.dao;
+
+public interface SkillDao {
+
+}

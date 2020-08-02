@@ -1,0 +1,13 @@
+package io.hack.poll.app.model;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@Data
+public class Ratings {
+	
+	private int id;
+	private String name;
+	private double rating;
+}

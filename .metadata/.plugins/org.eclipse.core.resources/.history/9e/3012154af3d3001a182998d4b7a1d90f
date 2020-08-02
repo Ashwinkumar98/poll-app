@@ -1,0 +1,28 @@
+package io.hack.poll.app.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
+
+import io.hack.poll.app.dto.UserDto;
+import io.hack.poll.app.mapper.DtoModalMapper;
+import io.hack.poll.app.service.UserService;
+
+@RestController
+public class UserController {
+	
+	@Autowired
+	private UserService service;
+	
+	@Autowired
+	private DtoModalMapper mapper;
+	
+	public ResponseEntity<List<UserDto>> getAllCandidates(){
+		return ResponseEntity<List<UserDto>>(
+				service.getAllCandidates()
+					   .stream()
+					   .map(u->));
+	}
+}

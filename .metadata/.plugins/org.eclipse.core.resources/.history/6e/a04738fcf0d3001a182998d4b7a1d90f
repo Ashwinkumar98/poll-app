@@ -1,0 +1,8 @@
+package io.hack.poll.app.mapper;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class DtoModalMapper {
+
+}

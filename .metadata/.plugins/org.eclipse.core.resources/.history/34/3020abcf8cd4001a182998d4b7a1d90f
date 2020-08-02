@@ -1,0 +1,14 @@
+package io.hack.poll.app.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import io.hack.poll.app.dto.SkillsDto;
+import io.hack.poll.app.dto.UserDto;
+import io.hack.poll.app.model.User;
+
+public interface AdminService {
+	User addUser(UserDto user);
+	boolean removeUser(int userId);
+	Optional<User> addSkills(int userId,List<SkillsDto> skills);
+}

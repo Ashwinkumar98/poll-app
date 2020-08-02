@@ -1,0 +1,9 @@
+package io.hack.poll.app.service;
+
+import java.util.List;
+
+import io.hack.poll.app.model.User;
+
+public interface UserService {
+	List<User> getAllCandidates();
+}

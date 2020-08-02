@@ -1,0 +1,15 @@
+package io.hack.poll.app.dto;
+
+import java.io.Serializable;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@Data
+public class RatingDto implements Serializable{
+	private static final long serialVersionUID = -8480217574980787831L;
+	
+	private String domainName;
+	private double rating;
+}

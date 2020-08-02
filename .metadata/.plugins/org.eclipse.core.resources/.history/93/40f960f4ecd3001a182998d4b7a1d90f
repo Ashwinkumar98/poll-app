@@ -1,0 +1,26 @@
+package io.hack.poll.app.model;
+
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@Data
+@Entity
+@Table(name="users")
+public class User {
+	@Id
+	private int userId;
+	private String userName;
+	private double expertistLevel;
+	private int noOfVotes;
+	@OneToMany(mappedBy = "user")
+	private List<Ratings> ratings;
+	private User votedFor;
+}

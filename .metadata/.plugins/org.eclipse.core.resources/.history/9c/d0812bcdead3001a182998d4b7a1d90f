@@ -1,0 +1,26 @@
+package io.hack.poll.app.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import io.hack.poll.app.dao.UserDao;
+import io.hack.poll.app.model.User;
+
+@Service
+public class AdminServiceImp implements AdminService {
+	
+	@Autowired
+	private UserDao userDao;
+
+	@Override
+	public User addUser(User user) {
+		
+	}
+
+	@Override
+	public boolean removeUser(int userId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

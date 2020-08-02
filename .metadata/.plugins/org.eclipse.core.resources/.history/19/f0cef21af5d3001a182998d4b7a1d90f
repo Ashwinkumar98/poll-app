@@ -1,0 +1,28 @@
+package io.hack.poll.app.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import io.hack.poll.app.dao.UserDao;
+import io.hack.poll.app.model.User;
+
+@Service
+public class UserServiceImp implements UserService {
+	
+	@Autowired
+	private UserDao userDao;
+	
+	@Override
+	public List<User> getAllCandidates() {
+		return userDao.findAll();
+	}
+
+	@Override
+	public Optional<User> getCandidateById(int userId) {
+		return userDao.findById(userId);
+	}
+
+}

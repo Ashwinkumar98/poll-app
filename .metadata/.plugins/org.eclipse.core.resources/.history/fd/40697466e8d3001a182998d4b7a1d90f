@@ -1,0 +1,13 @@
+package io.hack.poll.app.model;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@Data
+public class User {
+	
+	private int userId;
+	private String userName;
+	private double expertistLevel;
+}

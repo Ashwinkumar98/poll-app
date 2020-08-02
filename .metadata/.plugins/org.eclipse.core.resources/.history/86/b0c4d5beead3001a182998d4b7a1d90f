@@ -1,0 +1,22 @@
+package io.hack.poll.app.service;
+
+import org.springframework.stereotype.Service;
+
+import io.hack.poll.app.model.User;
+
+@Service
+public class AdminServiceImp implements AdminService {
+
+	@Override
+	public User addUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean removeUser(int userId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

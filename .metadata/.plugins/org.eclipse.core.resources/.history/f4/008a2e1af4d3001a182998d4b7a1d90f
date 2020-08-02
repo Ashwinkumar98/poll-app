@@ -1,0 +1,44 @@
+package io.hack.poll.app.controller;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import io.hack.poll.app.dto.UserDto;
+import io.hack.poll.app.mapper.DtoModalMapper;
+import io.hack.poll.app.model.User;
+import io.hack.poll.app.service.UserService;
+
+@RestController
+public class UserController {
+	
+	@Autowired
+	private UserService service;
+	
+	@Autowired
+	private DtoModalMapper mapper;
+	
+	@GetMapping("/user")
+	public ResponseEntity<List<UserDto>> getAllCandidates(){
+		return new ResponseEntity<List<UserDto>>(
+				service.getAllCandidates()
+						.stream()
+						.map(u->mapper.userToDto(u))
+						.collect(Collectors.toList()), 
+						HttpStatus.OK);
+	}
+	
+	@GetMapping("/user/{userId}")
+	public ResponseEntity<UserDto> getUserById(@PathVariable(name = "userId",required = true) int userId){
+		Optional<User> data = service.getCandidateById(userId);
+		if(data.isPresent())
+			return new ResponseEntity<UserDto>(mapper.userToDto(data.get()), HttpStatus.OK);
+	}
+}

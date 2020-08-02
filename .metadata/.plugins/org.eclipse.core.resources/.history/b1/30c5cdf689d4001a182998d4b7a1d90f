@@ -1,0 +1,27 @@
+package io.hack.poll.app.model;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@Data
+public class Skills {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "skill_id")
+	private int skillId;
+	@Column(name = "skill_name")
+	private String skillName;
+	@Column(name = "rating")
+	private int rating;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+}

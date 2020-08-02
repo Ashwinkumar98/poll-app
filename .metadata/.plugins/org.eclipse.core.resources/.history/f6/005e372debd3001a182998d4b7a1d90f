@@ -1,0 +1,5 @@
+package io.hack.poll.app.controller;
+
+public class AdminController {
+
+}

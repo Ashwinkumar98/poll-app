@@ -1,0 +1,57 @@
+package io.hack.poll.app.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import io.hack.poll.app.dao.UserDao;
+import io.hack.poll.app.dto.UserDto;
+import io.hack.poll.app.mapper.DtoModalMapper;
+import io.hack.poll.app.model.User;
+
+@Service
+public class UserServiceImp implements UserService {
+	
+	@Autowired
+	private UserDao userDao;
+	
+	@Autowired
+	private DtoModalMapper mapper;
+	
+	@Override
+	public List<User> getAllCandidates() {
+		return userDao.findAll();
+	}
+
+	@Override
+	public Optional<User> getCandidateById(int userId) {
+		return userDao.findById(userId);
+	}
+
+	@Override
+	public Optional<User> updateUser(int userId,UserDto user) {
+		if(getCandidateById(userId).isPresent()) {
+			User userData = mapper.DtoToUser(user);
+			userData.setUserId(userId);
+			return Optional.of(userDao.save(userData));
+		}
+		return Optional.empty();
+	}
+
+	@Override
+	public boolean voteUser(int votee, int voter) {
+		Optional<User> voterData = getCandidateById(voter);
+		Optional<User> voteeData = getCandidateById(votee);
+		if(voteeData.isPresent() && voteeData.isPresent()) {
+			voterData.get().setVotedFor(voteeData.get());
+			voteeData.get().setNoOfVotes(voteeData.get().getNoOfVotes()+1);
+			userDao.save(voteeData.get());
+			userDao.save(voterData.get());
+			return true;
+		}
+		return false;
+	}
+
+}

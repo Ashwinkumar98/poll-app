@@ -1,0 +1,13 @@
+package io.hack.poll.app;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class HackPollApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(HackPollApplication.class, args);
+	}
+
+}

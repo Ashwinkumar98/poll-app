@@ -1,0 +1,26 @@
+package io.hack.poll.app.dto;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+
+@NoArgsConstructor
+@Data
+public class UserDto implements Serializable{
+	
+	private static final long serialVersionUID = -349605004510915378L;
+	@NotEmpty(message = "userName is required")
+	private String userName;
+	@NonNull(message = "expertistLevel is required")
+	private double expertistLevel;
+	private int noOfVotes;
+	@Valid
+	private List<RatingDto> ratings;
+
+}

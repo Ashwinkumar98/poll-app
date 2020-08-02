@@ -1,0 +1,13 @@
+package io.hack.poll.app.dto;
+
+import java.io.Serializable;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@Data
+public class SkillsDto implements Serializable{
+	private static final long serialVersionUID = -4177374861019420910L;
+
+}

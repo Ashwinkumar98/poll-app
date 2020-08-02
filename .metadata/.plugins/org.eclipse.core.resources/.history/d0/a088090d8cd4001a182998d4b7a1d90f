@@ -1,0 +1,58 @@
+package io.hack.poll.app.service;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import io.hack.poll.app.dao.SkillDao;
+import io.hack.poll.app.dao.UserDao;
+import io.hack.poll.app.dto.SkillsDto;
+import io.hack.poll.app.dto.UserDto;
+import io.hack.poll.app.mapper.DtoModalMapper;
+import io.hack.poll.app.model.Skills;
+import io.hack.poll.app.model.User;
+
+@Service
+public class AdminServiceImp implements AdminService {
+	
+	@Autowired
+	private UserDao userDao;
+	
+	@Autowired
+	private DtoModalMapper mapper;
+	
+	@Autowired
+	private SkillDao skillDao;
+
+	@Override
+	public User addUser(UserDto user) {
+		user.setSkills(new LinkedList<>());
+		return userDao.save(mapper.DtoToUser(user));
+	}
+
+	@Override
+	public boolean removeUser(int userId) {
+		if(userDao.existsById(userId)) {
+			userDao.deleteById(userId);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public Optional<User> addSkills(int userId,List<SkillsDto> skills) {
+		Optional<User> user = userDao.findById(userId);
+		if(user.isPresent()) {
+			skills.stream().forEach(s->{
+				Skills skill = mapper.DtoToSKills(s);
+				skill.setUser(user.get());
+				
+			});
+		}
+		return Optional.empty();
+	}
+
+}

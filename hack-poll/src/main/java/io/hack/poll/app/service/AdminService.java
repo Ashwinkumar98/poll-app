@@ -1,0 +1,8 @@
+package io.hack.poll.app.service;
+import io.hack.poll.app.dto.UserDto;
+import io.hack.poll.app.model.User;
+
+public interface AdminService {
+	User addUser(UserDto user);
+	boolean removeUser(int userId);
+}

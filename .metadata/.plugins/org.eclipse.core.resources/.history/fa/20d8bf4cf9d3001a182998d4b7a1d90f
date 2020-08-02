@@ -1,0 +1,9 @@
+package io.hack.poll.app.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import io.hack.poll.app.model.Ratings;
+
+public interface RatingDao extends JpaRepository<Ratings, Integer>{
+
+}

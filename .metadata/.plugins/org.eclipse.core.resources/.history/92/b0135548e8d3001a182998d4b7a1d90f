@@ -1,0 +1,5 @@
+package io.hack.poll.app.model;
+
+public class User {
+
+}
